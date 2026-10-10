@@ -1,0 +1,465 @@
+/* FundLink: a bright research canvas framed by deep forest green. */
+:root {
+  color-scheme: light;
+  --bg: #f3f6f5;
+  --panel: #ffffff;
+  --panel2: #edf3f0;
+  --line: #dce5e0;
+  --text: #1b302a;
+  --muted: #64776e;
+  --cyan: #177454;
+  --cyan-dark: #e5f2eb;
+  --purple: #4d5fa3;
+  --orange: #916526;
+  --red: #b74141;
+  --shadow: 0 4px 24px #183f2e05, 0 1px 3px #183f2e03;
+}
+body {font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.65}
+::selection {background:#c5e6d8; color:#143c2c}
+button {transition: background .2s, border-color .2s, box-shadow .2s, transform .2s}
+button:disabled {cursor:default}
+h1,h2,h3 {letter-spacing:-.025em}
+input,textarea,select {background:#fbfcfb; border-color:#d9e3dd; border-radius:10px; padding:12px 14px; color:var(--text); transition:border-color .2s,box-shadow .2s; font-size:14px}
+input:hover,textarea:hover,select:hover {border-color:#aac4b7}
+input:focus,textarea:focus,select:focus {border-color:#36896a; box-shadow:0 0 0 3px #1774540c; outline:0}
+input::placeholder,textarea::placeholder {color:#7b8c82}
+.primary,.secondary {min-height:42px; border-radius:10px; padding:10px 18px; font-size:14px}
+.primary {color:#fff; background:#176b4f; border-color:#176b4f; box-shadow:0 3px 8px #176b4f14}
+.primary:hover {background:#10563f; border-color:#10563f; box-shadow:0 5px 14px #176b4f23; transform:translateY(-1px)}
+.secondary {background:#fff; color:#375548; border-color:#d6e2da; box-shadow:0 1px 2px #14392c04}
+.secondary:hover {background:#f3f8f5; border-color:#a9c5b6; transform:translateY(-1px)}
+.quiet:hover,.icon-button:hover {background:#e9f1ec; color:#175c44; border-radius:8px}
+.primary.soft {color:#176b4f; background:#eaf4ee; border-color:#d3e8dc; box-shadow:none}
+.primary.soft:hover {background:#dcefe3; border-color:#a5ceb5}
+.primary.danger {background:#a83434; border-color:#a83434; color:white}
+.secondary.danger {color:#b74141; border-color:#eed6d6}
+.brand {letter-spacing:-.8px; font-weight:700; color:#173c2c}
+.brand-mark {background:#176b4f; color:white; transform:none; border-radius:12px; box-shadow:0 4px 12px #1e654521}
+.brand-ai {font-size:12px; font-weight:650; background:#e8f2ec; padding:3px 5px; border-radius:5px; margin-left:5px}
+.badge {color:#5a6c62; background:#f1f5f2; border-color:#e1e8e3; border-radius:6px; font-weight:500; font-size:12px; padding:4px 9px}
+.badge.cyan {color:#176b4f; background:#e9f5ed; border-color:#d4e9dc}
+.badge.purple {color:#5260a1; background:#eff1fb; border-color:#dde2f3}
+.badge.amber {color:#94671e; background:#fbf4e6; border-color:#eee0bc}
+.badge.subtle {color:#728277; background:#f4f6f4; border-color:#e7ece8}
+.notice {background:#f0f7f2; border-color:#dcece1; color:#51705e; border-radius:12px; line-height:1.8}
+.field {color:#4c6557; font-size:14px; font-weight:500; gap:8px}
+.panel {border-color:#e0e7e2; border-radius:16px; box-shadow:var(--shadow); padding:26px}
+.panel h2 {font-size:22px}
+.panel h3 {font-weight:600}
+.panel p {font-size:15px; color:#67786e}
+.panel.inner {background:#f5f8f5; box-shadow:none}
+.overline,.section-kicker {color:#658575; font-size:12px; letter-spacing:1.8px; font-weight:600}
+
+/* The entrance gives each side of the network a distinct identity. */
+.entry {background:radial-gradient(ellipse at 50% 0%,#dbece2b3,transparent 60%),#f7f9f6; isolation:isolate; position:relative; overflow:hidden}
+.entry:before {content:""; position:absolute; width:700px; height:700px; border:1px solid #1b654c0a; border-radius:50%; left:calc(50% - 350px); top:-390px; z-index:-1; box-shadow:0 0 0 80px #28684303,0 0 0 160px #28684302; pointer-events:none}
+.entry-header {height:88px; border-color:#dbe5dd; margin:0 5.3%}
+.header-note {color:#698375; font-size:13px}
+.status-light {background:#43836b}
+.entry-main {max-width:1080px; padding:48px 36px 38px}
+.eyebrow {color:#4a7861; font-size:12px; letter-spacing:2.5px}
+.eyebrow span {background:#c5a674; width:25px}
+.entry-main>h1 {font-size:clamp(34px,4vw,52px); font-weight:650; letter-spacing:-2px; line-height:1.4; margin:20px 0 14px}
+.entry-main>h1 span {color:#207558}
+.entry-intro {color:#748279; line-height:1.9}
+.role-grid {gap:26px; margin:36px 0 27px}
+.role-card {border-radius:22px; border:1px solid #204f3b; padding:28px 32px 0; box-shadow:0 14px 36px #173f3110; background:linear-gradient(125deg,#1c533f,#123d30); color:#fff}
+.role-card:after {content:""; position:absolute; height:220px; width:220px; right:-140px; top:70px; border:1px solid #ffffff09; border-radius:50%; box-shadow:0 0 0 32px #ffffff03; pointer-events:none}
+.role-card.founder {background:#fff; border-color:#e0e5de; color:#223b2e; box-shadow:0 12px 36px #244b3410}
+.role-card.founder:after {border-color:#a67d360c; box-shadow:0 0 0 32px #a67d3603}
+.role-card:hover {border-color:#428a67; box-shadow:0 20px 40px #173f311c; transform:translateY(-5px)}
+.role-card.founder:hover {border-color:#c5b08b; box-shadow:0 20px 40px #785d2e13}
+.role-icon {width:52px; height:52px; border:1px solid #b6dec330; background:#d2efd417; color:#cfdfbd; border-radius:14px}
+.founder .role-icon {background:#faf4e8; border-color:#eee2ca; color:#9c7d46}
+.role-number {color:#acc6b7; font-family:inherit; font-size:12px; letter-spacing:1.4px}
+.founder .role-number {color:#978c76}
+.role-card h2 {font-size:30px; margin:20px 0 8px; font-weight:600; letter-spacing:0}
+.role-card p {color:#b5c9bf; font-size:15px}
+.role-card.founder p {color:#748277}
+.role-features {margin:23px 0; gap:9px}
+.role-features span {color:#d2dfd7; font-size:14px}
+.role-features svg {color:#bddbb2}
+.founder .role-features span {color:#586d5f}
+.founder .role-features svg {color:#a68d5a}
+.role-action {border-color:#ffffff21; color:#e1eccf; padding:18px 0; font-weight:600}
+.founder .role-action {border-color:#e7e9e1; color:#806536}
+.keycap {display:none}
+.entry-assurance {color:#6c8071; font-size:12px; gap:26px}
+.entry-assurance svg {color:#789983}
+.entry-footer {color:#859487; font-size:12px; padding-top:20px; padding-bottom:22px}
+.entry-footer span:nth-child(2) {font-size:12px; letter-spacing:2px}
+.onboard {max-width:840px}
+.onboard-kicker {font-size:14px}
+.option {background:white; border-radius:12px; padding:18px; box-shadow:var(--shadow)}
+.option:hover,.option.selected {background:#eaf5ed; border-color:#7caf92; color:#176b4f}
+.progress-track {background:#dce8df; height:5px}
+.progress-track>div {background:#277b58}
+.profile-review {border-radius:16px; background:white; padding:12px 24px; border:1px solid var(--line)}
+
+/* A quiet, high contrast navigation frame. */
+.sidebar {--cyan:#c9dea5; --text:#eaf2e9; --muted:#a4bdae; --line:#ffffff18; background:#143d30; border:0; padding-top:30px; width:244px; box-shadow:4px 0 30px #183a2305}
+.sidebar-brand {padding-bottom:31px}
+.sidebar .brand {color:#f5f5e9; font-size:22px}
+.sidebar .brand-mark {background:#d2e4bc; color:#254b36; box-shadow:none; width:34px; height:34px; border-radius:10px}
+.sidebar .brand-ai {color:#d5e7bb; background:#ffffff0a}
+.workspace-picker {background:#ffffff07; border-color:#ffffff1c; border-radius:11px; padding:13px 11px; margin-bottom:25px; color:#f1f4eb}
+.workspace-picker:hover {background:#ffffff0c}
+.workspace-picker strong {font-size:13px}
+.workspace-picker small {font-size:10px; letter-spacing:1px; color:#97b39f}
+.workspace-avatar {color:#e0e9bf; background:#4c695145; border-radius:8px; width:32px; height:32px}
+.nav-label {font-size:12px; color:#89a793; letter-spacing:1px; margin-bottom:12px}
+.sidebar nav {gap:5px}
+.sidebar nav button {color:#b0c6b7; font-size:14px; padding:12px 14px; border-radius:9px; min-height:45px}
+.sidebar nav button svg {stroke-width:1.7}
+.sidebar nav button:hover {background:#ffffff09; color:#f3f6e9}
+.sidebar nav button.active {background:#d2e4bc; border-color:#d2e4bc; color:#214b35; box-shadow:0 4px 12px #06271b20; font-weight:600}
+.sidebar nav button.active svg {color:#315e40}
+.sidebar nav button.active .nav-ai {background:#bdd2a9; color:#375b35}
+.sidebar nav .nav-divider {margin-top:18px}
+.nav-ai {background:#ffffff10; color:#cce0b0; border-radius:4px}
+.mini-agent {background:#204d3b; border-color:#ffffff16; border-radius:12px; padding:15px 12px; gap:11px}
+.mini-agent-icon {color:#d2e4bc}
+.mini-agent strong {font-size:13px; color:#e4ecdc}
+.mini-agent span:not(.mini-agent-icon) {font-size:11px; color:#9db7a4}
+.sidebar-user {padding:20px 3px; border-color:#ffffff18}
+.sidebar-user strong {font-size:13px; color:#dce9da}
+.sidebar-user small {color:#9ab29f; font-size:11px}
+.user-avatar {background:#cbdcaa; color:#345334; border:0; width:33px; height:33px; font-weight:650}
+.sidebar .quiet:hover {background:#ffffff10; color:#fff}
+/* Fundraising uses indigo; investing keeps the forest-green navigation. */
+.sidebar[data-role="founder"] {--cyan:#dce0fb; --text:#edf0ff; --muted:#a7b2d6; background:#242b50; scrollbar-color:#69749e transparent}
+.sidebar[data-role="founder"] .brand {color:#f2f3ff}
+.sidebar[data-role="founder"] .brand-mark {background:#dce0fb; color:#29345d}
+.sidebar[data-role="founder"] .brand-ai {color:#dce0fb}
+.sidebar[data-role="founder"] .workspace-picker {color:#edf0ff}
+.sidebar[data-role="founder"] .workspace-picker small,
+.sidebar[data-role="founder"] .nav-label {color:#a7b2d6}
+.sidebar[data-role="founder"] .workspace-avatar {color:#e3e7ff; background:#444f7d}
+.sidebar[data-role="founder"] nav button {color:#bdc7e8}
+.sidebar[data-role="founder"] nav button:hover {color:#f2f3ff}
+.sidebar[data-role="founder"] nav button.active {background:#dce0fb; border-color:#dce0fb; color:#29345d; box-shadow:0 4px 12px #11173330}
+.sidebar[data-role="founder"] nav button.active svg {color:#3f4b79}
+.sidebar[data-role="founder"] .nav-ai {color:#dce0fb}
+.sidebar[data-role="founder"] nav button.active .nav-ai {background:#c5ccec; color:#354169}
+.sidebar[data-role="founder"] .mini-agent {background:#303a64}
+.sidebar[data-role="founder"] .mini-agent-icon {color:#dce0fb}
+.sidebar[data-role="founder"] .mini-agent strong,
+.sidebar[data-role="founder"] .sidebar-user strong {color:#edf0ff}
+.sidebar[data-role="founder"] .mini-agent span:not(.mini-agent-icon),
+.sidebar[data-role="founder"] .sidebar-user small {color:#b5bfdf}
+.sidebar[data-role="founder"] .user-avatar {background:#dce0fb; color:#29345d}
+.main-layout {margin-left:244px}
+.app-header {height:76px; border-bottom:1px solid #dfe7e2; background:#ffffffb8; padding:0 40px; backdrop-filter:blur(12px)}
+.breadcrumb {color:#92a196; font-size:13px}
+.breadcrumb span {color:#b4c2b8; margin:0 14px}
+.breadcrumb strong {color:#4c6656; font-weight:500}
+.save-indicator {color:#6d8c75; font-size:12px}
+.app-header .badge {background:#f4f7f2; color:#6d816f; font-size:12px}
+.workspace-main {max-width:1450px; padding:36px 40px 52px}
+.section-heading {margin-bottom:28px; align-items:center}
+.section-kicker {font-size:12px; font-weight:600; letter-spacing:1.9px; margin-bottom:9px; color:#72947c}
+.section-heading h1 {font-size:30px; font-weight:650; letter-spacing:-.6px; color:#213e2e}
+.section-heading p {color:#758679; font-size:14px; margin-top:8px}
+.section-heading>.secondary {padding:9px 15px; font-size:13px}
+.workspace-footer {border-color:#dde6df; color:#7c8e7e; font-size:12px; padding:18px 40px}
+
+/* Discovery, evidence, and shared surfaces. */
+.insight-banner {border-color:#d5e5d8; background:linear-gradient(105deg,#e6f1e5,#f0f6ec); border-radius:16px; padding:22px 24px}
+.insight-icon {color:#4d7652; background:#f8fcf3; border-color:#d6e5cd; border-radius:13px; height:48px; width:48px}
+.insight-banner h3 {font-size:16px; color:#3b5b42}
+.insight-banner p {color:#708676; font-size:13px}
+.insight-banner .overline {font-size:11px; color:#709267}
+.insight-banner>.quiet {font-size:13px; color:#417544}
+.metric-grid {background:transparent; border:0; border-radius:0; gap:16px; overflow:visible; margin:24px 0 30px}
+.metric-grid>div {background:white; border:1px solid #e0e7df; border-radius:14px; padding:21px; box-shadow:var(--shadow)}
+.metric-grid>div>span {color:#758a79; font-size:13px}
+.metric-grid>div>span svg {color:#729a7a}
+.metric-grid strong {font-size:34px; color:#2c563a; font-weight:550; letter-spacing:-1px; margin:10px 0 2px; font-variant-numeric:tabular-nums}
+.metric-grid strong small {font-size:12px; color:#8b9a8c; letter-spacing:0}
+.metric-grid p {color:#8a998b; font-size:12px}
+.tabs {gap:27px}
+.tabs button {font-size:14px; font-weight:500; padding-bottom:15px}
+.tabs button.active {border-color:#207852; color:#206b49}
+.tabs small {background:#e5efe4; color:#4c7750; font-size:12px}
+.search svg,.filter-count {color:#829481}
+.filters {margin:23px 0; gap:14px}
+.filters select {background:white}
+.filters input {background:white}
+.entity-grid {gap:22px}
+.entity-card {background:white; border:1px solid #dfe7e0; border-radius:17px; padding:25px; box-shadow:var(--shadow); transition:transform .2s,border-color .2s,box-shadow .2s}
+.entity-card:hover {border-color:#b4cfbc; transform:translateY(-3px); box-shadow:0 10px 28px #2458340b}
+.company-symbol {border-color:#d9e7dd; border-radius:12px; color:color-mix(in srgb,var(--entity-color,#177454) 65%,#173323); background:color-mix(in srgb,var(--entity-color,#177454) 11%,white)}
+.entity-title h2 {font-size:23px; color:#254633; letter-spacing:-.5px}
+.entity-title>span {color:#819080; font-size:12px}
+.entity-desc {color:#657a6a; font-size:15px; margin:17px 0 20px; line-height:1.9}
+.entity-stats {background:#f6f9f5; border-color:#e5ece2; border-radius:10px; padding:15px 16px}
+.entity-stats span {color:#7b907d; font-size:12px}
+.entity-stats strong {color:#34573d; font-size:17px; font-weight:600; font-variant-numeric:tabular-nums}
+.entity-stats strong small {color:#7a8c79; font-size:12px; font-weight:400}
+.match-reasons>span {color:#5b8560; font-size:12px}
+.match-reasons p {color:#68806b; font-size:14px}
+.match-reasons p svg {color:#72a074}
+.risk-inline {color:#9a7944; font-size:12px}
+.risk-inline>span {background:#bda069}
+.card-actions {border-color:#ebefea; margin-top:20px; padding-top:17px}
+.card-actions .primary,.card-actions .secondary {font-size:13px; min-height:39px}
+.list-footnote {color:#82947f; font-size:12px}
+.empty {border-color:#cbdacd; background:#f9fcf8; color:#88a178; border-radius:16px}
+.empty h3 {color:#426547}
+.empty p {color:#829580}
+.modal {background:#fff; border-color:#d7e3d8; border-radius:20px; box-shadow:0 24px 100px #102d3440}
+.modal::backdrop {background:#0e2c2769; backdrop-filter:blur(6px)}
+.modal-inner {padding:28px 30px}
+.detail-top p,.detail-description {color:#526e59}
+.detail-metrics {background:#f6f9f3; border-color:#e0e9db; border-radius:13px}
+.detail-metrics small {color:#7c9078}
+.info-grid span {color:#82957c; font-size:12px}
+.evidence-card p {color:#60795e; font-size:15px}
+.risk-evidence>div {border-color:#eadabd; background:#fdf9ef; border-radius:12px}
+.risk-evidence span,.risk-evidence small {color:#9a835b; font-size:12px}
+.risk-evidence strong {color:#8a662d}
+.error-banner {box-shadow:0 10px 40px #461d1d24; border-radius:13px}
+.toast {background:#174d36; color:#eef9e5; border-color:#376d4f; box-shadow:0 10px 35px #244b3721; border-radius:12px}
+.inline-error {background:#fcf0ee; border-color:#efd1cb; color:#a54138}
+
+/* Agent and public-source research. */
+.chat-panel {background:#fff; border-radius:18px; border-color:#dfe7de; box-shadow:var(--shadow)}
+.chat-header {padding:20px 23px; background:#fcfdfb; border-color:#e5ece1}
+.chat-header strong {font-size:15px; font-weight:600; color:#2d5139}
+.chat-header small {font-size:12px; color:#899a84}
+.chat-header .badge {font-size:12px}
+.agent-symbol,.welcome-symbol,.radar-symbol {background:#edf5e9; border-color:#dce8d4; color:#638b4c}
+.agent-welcome h2 {color:#345634; font-size:24px}
+.agent-welcome p {color:#7c9077; font-size:15px}
+.quick-grid button {background:#fafcf7; border-color:#e0e8da; border-radius:13px; padding:20px}
+.quick-grid button:hover {background:#f0f7e9; border-color:#c2d6b4; transform:translateY(-2px)}
+.quick-grid button>svg {color:#7b9b63}
+.quick-grid span {color:#4a6845}
+.quick-grid small {color:#84947a; font-size:12px; line-height:1.7}
+.chat-messages {padding:25px; scrollbar-color:#cbd9c6 transparent}
+.message-avatar {background:#e5efdc; color:#4e7940; border-radius:9px; width:31px; height:31px}
+.message.user .message-avatar {background:#e8ecf6; color:#6b77a2}
+.message-author {color:#87967f; font-size:12px}
+.message .prose {color:#486042; font-size:15px; line-height:1.95}
+.message.user .prose {border-color:#e1e9dc; background:#f3f7ee; padding:15px 18px; border-radius:2px 13px 13px 13px}
+.message-tools .quiet {font-size:12px; color:#83937b}
+.chat-composer {background:#fbfcf9; border-color:#e1e8da; padding:20px 23px}
+.composer-context>span {font-size:12px; color:#84937b; flex-shrink:0}
+.composer-context select {font-size:12px; background:#f1f5ec; border-color:#e0e8d8; width:auto; max-width:75%}
+.chat-composer textarea {font-size:15px; min-height:85px}
+.chat-composer small {font-size:12px; color:#95a08d}
+.chat-composer .primary {font-size:13px; padding:9px 16px}
+.agent-side h3 {font-size:15px; color:#526d45}
+.agent-side p,.permission-line {font-size:14px; color:#839176}
+.permission-line svg {color:#7b9b61}
+.task-shortcut {font-size:14px; color:#798c6b}
+.source-options button {background:#fafcf8; border-color:#e0e8db; border-radius:12px; padding:20px}
+.source-options button.selected {background:#edf5e7; border-color:#94b778; box-shadow:0 0 0 1px #94b778}
+.source-options small {color:#839379; font-size:12px}
+.scan-panel .row p {font-size:14px}
+.pipeline-step {color:#6b815e; font-size:14px}
+.pipeline-step span {background:#f4f8ed; border-color:#d5e2c6; color:#8a9e67}
+.source-item {background:white; border-radius:14px; padding:24px; box-shadow:var(--shadow)}
+.source-item p {color:#7d9070; font-size:15px}
+.watch-event {background:#f2f6eb; border-radius:11px; padding:18px}
+.watch-event strong {color:#567046; font-size:14px}
+.watch-event span {color:#849875; font-size:12px}
+.feedback-stat span,.event-line time {font-size:12px; color:#879574}
+.event-marker {background:#b8cb91; border-color:#95b064}
+
+/* Finance: a prominent, dark result card beside light inputs. */
+.tools-tabs {background:#e7ede6; display:flex; gap:5px; border:1px solid #e0e7db; border-radius:12px; padding:5px; width:fit-content; max-width:100%; margin-bottom:28px}
+.tools-tabs button {border:0; border-radius:8px; padding:10px 21px; color:#718266; font-size:14px; white-space:nowrap}
+.tools-tabs button.active {background:white; color:#37612f; box-shadow:0 2px 7px #344e3010}
+.calculator-layout {gap:26px; align-items:stretch}
+.calculator-layout>.panel {padding:28px 30px}
+.calculator-layout .field {margin:21px 0; font-size:14px; color:#6a7d5d}
+.calculator-layout .field:last-child {margin-bottom:0}
+.calculator-layout input {font-size:18px; font-weight:500; font-variant-numeric:tabular-nums; color:#36512b; padding:13px 16px; background:#f9fbf6; border-color:#e0e8d8}
+.calculation-result {--cyan:#d8e7a7; --line:#ffffff21; --muted:#b8c9a9; background:linear-gradient(135deg,#245238,#153a2b); border:1px solid #315f3e; color:#f1f5de; border-radius:18px; padding:34px; box-shadow:0 8px 25px #22452d12; overflow:hidden; position:relative; isolation:isolate}
+.calculation-result:after {content:""; z-index:-1; position:absolute; height:330px; width:330px; border:1px solid #ffffff09; border-radius:50%; right:-230px; top:-90px; box-shadow:0 0 0 45px #ffffff03,0 0 0 95px #ffffff02; pointer-events:none}
+.calculation-result .overline {color:#bbd092; font-size:12px; letter-spacing:2px}
+.calculation-result h3 {color:#d3dfc1; font-size:16px; font-weight:400; margin:34px 0 10px}
+.calculation-result>strong {font-size:78px; color:#edf3d2; font-weight:400; letter-spacing:-3px; font-variant-numeric:tabular-nums}
+.calculation-result>strong small {color:#bbce9f; font-size:16px; margin-left:12px}
+.calculation-result p {color:#b2c3a3; font-size:14px}
+.calculation-result .row span {color:#c4d3b1; font-size:14px}
+.calculation-result b {font-size:23px; font-weight:500; color:#eef5cf; font-variant-numeric:tabular-nums}
+.calculation-result .formula {color:#a4b792; font-size:12px; margin-top:11px}
+.calculation-result .notice {background:#ffffff07; border-color:#ffffff17; color:#bdcdaa; font-size:12px; padding:13px 15px; margin-top:25px}
+.calculation-result>.secondary {background:#ffffff0c; color:#dfe9c4; border-color:#ffffff2e; box-shadow:none; font-size:13px}
+.calculation-result>.secondary:hover {background:#ffffff16; border-color:#ffffff50}
+.ownership-bar {background:#d0e39e; height:12px; margin:29px 0; border-radius:8px}
+.ownership-bar span {background:#779568; border-color:#1d482f}
+.capital-types {margin-top:33px}
+.capital-types>h3 {font-size:18px; color:#5a7150; margin-bottom:18px}
+.tool-grid .panel {border-radius:14px; padding:23px 24px}
+.tool-grid h3 {font-size:15px; color:#5f774e}
+.tool-grid p {font-size:14px; color:#89967c; line-height:1.9}
+.checklist-item>span {color:#9bb16e; font-size:23px; font-family:inherit; font-variant-numeric:tabular-nums}
+.deal-list button {background:white; border-color:#dfe8d8; border-radius:12px}
+.deal-list button.active {background:#eff6e6; border-color:#a8c487}
+.deal-list small {color:#819671}
+.deal-avatar {background:#eaf2da; color:#698941}
+.deal-stage-track>div:before {background:#d6e1cb}
+.deal-stage-track span {background:#f3f6ec; color:#91a17d; border-color:#cfdbc0}
+.deal-stage-track small {color:#8b9a7b; font-size:11px}
+.deal-stage-track .completed span {background:#dfeccc; color:#618436; border-color:#b0c38a}
+.deal-stage-track .completed small {color:#64823f}
+.intention-row>div {color:#688949; font-size:13px}
+.task-done {color:#94a27f}
+.draft-preview {background:#f5f8ef; border:1px solid #e4ebdc; border-radius:12px}
+.upload-area {background:#f7faf2; border-color:#c9d8b7; border-radius:15px}
+.upload-area>svg {color:#8aab66}
+.upload-area p {color:#839a70; font-size:13px}
+.file-symbol {background:#edf5e1; border-color:#d6e5c3; color:#7c9d54; border-radius:9px}
+.file-name small {color:#8b9c7c; font-size:12px}
+
+@media(min-width:1600px) {.workspace-main {padding-top:45px}}
+@media(max-width:1200px) {
+  .sidebar {width:222px; padding-left:13px; padding-right:13px}
+  .main-layout {margin-left:222px}
+  .workspace-main {padding:30px 28px 45px}
+  .app-header,.workspace-footer {padding-left:28px; padding-right:28px}
+  .metric-grid {gap:12px}.metric-grid>div {padding:18px}.metric-grid strong {font-size:30px}
+  .section-heading h1 {font-size:28px}
+  .entity-card {padding:22px}.entity-stats strong {font-size:16px}
+  .calculation-result {padding:28px}.calculation-result>strong {font-size:68px}
+}
+@media(max-width:1000px) {
+  .sidebar {width:205px; padding-left:11px; padding-right:11px}
+  .main-layout {margin-left:205px}
+  .sidebar .brand {font-size:20px}.workspace-picker {padding:11px 8px}.sidebar nav button {padding:11px 12px; font-size:13px}
+  .workspace-main {padding:28px 23px 40px}
+  .metric-grid {grid-template-columns:repeat(2,1fr)}
+  .entity-grid {grid-template-columns:1fr}
+  .calculator-layout {gap:20px}.calculator-layout>.panel {padding:24px}
+  .tools-tabs button {padding:9px 14px}
+  .calculation-result {padding:25px}.calculation-result b {font-size:19px}
+}
+@media(max-width:760px) {
+  .sidebar {width:252px; padding:26px 16px 0}.sidebar nav button {padding:12px 14px; font-size:14px}
+  .main-layout {margin-left:0}
+  .app-header {height:66px; padding:0 19px}.app-header .badge {font-size:11px}
+  .workspace-main {padding:27px 20px 40px}
+  .section-heading h1 {font-size:25px}.section-kicker {font-size:11px; letter-spacing:1.6px}
+  .section-heading p {font-size:14px}.section-heading>.secondary {font-size:12px; padding:8px 11px; max-width:100px}
+  .workspace-footer {padding:17px 20px; font-size:11px}
+  .panel {padding:23px}.insight-banner {padding:19px 16px; align-items:flex-start}
+  .insight-banner h3 {font-size:14px}.insight-banner p {font-size:12px}.insight-icon {width:39px; height:39px}
+  .metric-grid {gap:12px; margin:20px 0 26px}.metric-grid>div {padding:17px}.metric-grid strong {font-size:31px}
+  .metric-grid p {font-size:11px}.metric-grid>div>span {font-size:12px}
+  .entity-card {padding:23px}.entity-card .entity-desc {font-size:15px}
+  .card-actions .primary,.card-actions .secondary {font-size:13px}
+  .filters {gap:9px}.tabs {gap:20px}.tools-tabs {gap:3px; width:100%; flex-wrap:nowrap; padding:4px}
+  .tools-tabs button {flex:1; font-size:12px; padding:10px 6px}
+  .calculator-layout {gap:20px}.calculator-layout>.panel {padding:24px}
+  .calculation-result {padding:28px}.calculation-result>strong {font-size:72px}
+  .entry-header {height:78px}.entry-main {padding:36px 22px}
+  .entry-main>h1 {font-size:34px; letter-spacing:-1px}.entry-intro {font-size:14px}
+  .eyebrow {font-size:10px; letter-spacing:1.8px}.role-grid {gap:18px; margin-top:29px}
+  .role-card {padding:23px 24px 0; border-radius:18px}.role-card h2 {font-size:28px}
+  .role-card p {font-size:14px}.role-features span {font-size:13px}
+  .entry-assurance {gap:13px; font-size:11px}.entry-footer {font-size:11px}
+  .chat-header,.chat-composer {padding:18px}.chat-messages {padding:20px 16px}
+  .chat-header small {font-size:11px}.chat-header strong {font-size:14px}
+  .agent-welcome h2 {font-size:21px}.quick-grid button {padding:17px}
+  .agent-side p {font-size:14px}.composer-context select {max-width:70%}
+  .message .prose {font-size:14px}.modal-inner {padding:23px}
+  .deal-stage-track small {font-size:10px; overflow-wrap:anywhere}
+  .source-item {padding:22px}.source-item>.row {gap:12px}
+}
+@media(max-width:430px) {
+  .entry-main>h1 span {display:block}.entry-main>h1 {font-size:33px}
+  .role-grid {grid-template-columns:1fr}.role-top {right:23px; top:23px}
+  .role-card h2 {margin:10px 0 7px}.role-card p {margin:0 0 21px; max-width:80%; font-size:13px}
+  .role-icon {width:41px; height:41px; border-radius:11px}.role-features {display:none}
+  .role-action {padding:15px 0}.entry-footer {padding-top:10px}
+  .entry-assurance {gap:12px; line-height:1.7}
+}
+@media(prefers-reduced-motion:reduce) {*,*:before,*:after {transition:none!important; animation:none!important; scroll-behavior:auto!important}}
+
+/* Keep supporting information and keyboard navigation comfortably readable. */
+.overline {text-decoration:none}
+input:focus-visible,textarea:focus-visible,select:focus-visible {outline:2px solid #36896a; outline-offset:3px}
+.section-heading p,.entry-intro,.role-card.founder p,.panel p,.tool-grid p,
+.agent-side p,.permission-line,.source-item p,.quick-grid small,.agent-welcome p,
+.metric-grid p,.metric-grid>div>span,.entity-title>span,.entity-stats span,
+.match-reasons p,.message-author,.chat-header small,.chat-composer small,
+.composer-context>span,.source-options small,.list-footnote,.filter-count,
+.info-grid span,.watch-event span,.file-name small,.entry-assurance,
+.entry-footer,.workspace-footer,.event-line time,.task-shortcut,
+.breadcrumb,.save-indicator,.section-kicker {color:#64776a}
+.panel p,.source-item p,.message .prose,.entity-desc,.agent-welcome p {font-size:16px}
+.tool-grid p {font-size:14px}
+.sidebar {overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:#547762 transparent}
+.sidebar>* {flex-shrink:0}
+.entity-stats strong {white-space:normal; overflow-wrap:anywhere}
+.calculation-result .row {flex-wrap:wrap; gap:10px}
+.calculation-result .row span {color:#c4d3b1}
+@media(min-width:761px) and (max-height:850px) {
+  .sidebar {padding-top:24px}
+  .sidebar-brand {padding-bottom:22px}
+  .workspace-picker {margin-bottom:18px}
+  .sidebar nav {gap:3px}
+  .sidebar nav button {min-height:42px; padding-top:10px; padding-bottom:10px}
+  .sidebar nav .nav-divider {margin-top:8px}
+  .sidebar-bottom {padding-top:10px}
+  .mini-agent {display:none}
+  .sidebar-user {padding:18px 2px}
+}
+@media(max-width:1000px) {.calculator-layout {grid-template-columns:1fr}}
+
+/* Founder capital discovery shares the catalogue, not the project scan flow. */
+.capital-radar-layout {display:grid; grid-template-columns:minmax(0,1.65fr) minmax(260px,1fr); gap:24px; align-items:start}
+.capital-filter-panel h2 {font-size:21px}
+.capital-filter-panel .row p {font-size:14px; margin:6px 0 0}
+.capital-filter-grid {display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 20px}
+.capital-filter-grid .field {margin:0 0 18px}
+.capital-filter-actions {display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:15px}
+.capital-source-note h3 {margin-top:18px}
+.capital-source-note p {font-size:14px}
+.capital-source-note .pipeline-step {font-size:13px; gap:12px}
+.capital-source-note .pipeline-step span {flex-shrink:0}
+.capital-source-note>.secondary {margin-top:12px}
+.capital-results-heading {flex-wrap:wrap}
+.capital-results-heading h2 {font-size:21px; margin-bottom:5px}
+.capital-card {display:flex; flex-direction:column}
+.capital-card .entity-stats {grid-template-columns:1fr 1.25fr}
+.capital-card .capital-stage-label {font-size:13px; line-height:1.9; font-weight:400}
+.capital-resources {margin:17px 0 0}
+.capital-resources>span {font-size:12px; color:var(--muted); display:block; margin-bottom:7px}
+.capital-card .match-reasons {flex:1}
+.capital-card-actions {display:flex; gap:8px; flex-wrap:wrap; border-top:1px solid var(--line); margin-top:20px; padding-top:18px}
+.capital-card-actions>button {padding:8px 11px; font-size:13px; flex:1; min-width:fit-content}
+.scan-history>h3 {display:flex; align-items:center; gap:8px}
+@media(max-width:1100px) {
+  .capital-radar-layout {grid-template-columns:1fr}
+  .capital-source-note .pipeline-step {display:none}
+  .capital-source-note hr {display:none}
+  .capital-source-note .overline,.capital-source-note>h3:first-of-type {display:none}
+  .capital-source-note>h3 {margin-top:0}
+}
+@media(max-width:550px) {
+  .capital-filter-grid {grid-template-columns:1fr}
+  .capital-filter-panel {padding:22px}
+  .capital-card .entity-stats {grid-template-columns:1fr}
+  .capital-card .entity-stats>div+div {border-left:0; border-top:1px solid var(--line); padding:12px 0 0; margin-top:12px}
+  .capital-filter-actions .primary,.capital-filter-actions .secondary {flex:1; font-size:13px}
+}
+
+/* Evidence, tool execution and calculation surfaces */
+.source-collector {margin-bottom:24px; background:linear-gradient(120deg,#fff,#f1f7f2)}
+.line-clamp-three {display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.tool-trace {margin:0 0 18px;background:#f0f5f1;border:1px solid #dce6dd;border-radius:12px;padding:12px 15px;font-size:13px}
+.tool-trace summary {cursor:pointer;color:#27614c;font-weight:600}
+.trace-step {padding:12px 0 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.trace-step p {flex-basis:100%;margin:0 0 0 2px;color:var(--muted)}
+.citation-list {margin-top:20px;padding:16px;border-left:3px solid #62a68a;background:#f7faf7;border-radius:0 10px 10px 0;font-size:12px}
+.citation-list>div {padding-top:10px}.citation-list small {display:block;color:var(--muted);overflow-wrap:anywhere;margin-top:4px}
+.citation-list a {color:#23634a;text-decoration:underline}.evidence-card blockquote {margin:12px 0;padding-left:14px;border-left:3px solid #c6d9cd;color:var(--muted)}
+.evidence-card p,.evidence-card small {overflow-wrap:anywhere}.panel.inner h3 {margin-top:12px}.entity-grid>.panel {min-width:0}
+.source-collector+.radar-top {margin-top:24px}.notice {overflow-wrap:anywhere}.history-line>small {white-space:normal}
+@media(max-width:600px){.citation-list{padding:10px}.tool-trace{padding:10px}.history-line{gap:10px;flex-wrap:wrap}.notice{flex-wrap:wrap}.source-collector .profile-form-grid{grid-template-columns:1fr}}
+
+.rendered-message{font-size:14px;line-height:1.8;overflow-wrap:anywhere}.rendered-message p{margin:3px 0}.rendered-message h3{font-size:16px;margin:18px 0 8px}.rendered-message h3:first-child{margin-top:0}.rendered-message .message-gap{height:8px}.message-bullet{padding-left:12px}.message-table{overflow-x:auto;margin:12px 0}.message-table table{border-collapse:collapse;min-width:100%;font-size:12px}.message-table th,.message-table td{border:1px solid var(--line);padding:8px 10px;text-align:left;min-width:80px}.message-table th{background:#edf3ef}.rendered-message code{background:#eef2ec;padding:1px 4px;border-radius:4px}

@@ -1,0 +1,85 @@
+import assert from 'node:assert/strict';
+import {DatabaseSync} from 'node:sqlite';
+import {readFileSync} from 'node:fs';
+import {registerHooks} from 'node:module';
+import {createHash} from 'node:crypto';
+import {confirmedIdentityIds,compareClaims,retrieveEvidence,classifySourceChange} from '../lib/knowledge.ts';
+
+const sql=new DatabaseSync(':memory:');sql.exec('PRAGMA foreign_keys = ON');sql.exec('CREATE TABLE documents(id TEXT PRIMARY KEY,owner TEXT,role TEXT)');sql.exec(readFileSync(new URL('../drizzle/0001_knowledge.sql',import.meta.url),'utf8'));
+const statement=(query,values=[])=>({bind(...next){return statement(query,next)},async first(){return sql.prepare(query).get(...values)??null},async all(){return {results:sql.prepare(query).all(...values)}},async run(){return {meta:{changes:Number(sql.prepare(query).run(...values).changes)}}}});
+globalThis.__relationsDb={prepare:query=>statement(query),batch:async items=>{sql.exec('BEGIN');try{const result=[];for(const item of items)result.push(await item.run());sql.exec('COMMIT');return result}catch(error){sql.exec('ROLLBACK');throw error}}};
+const records=new Map(),requests=[];
+globalThis.__watchRecords=records;globalThis.__watchRequests=requests;
+registerHooks({resolve(specifier,context,next){
+ if(specifier==='./server'&&context.parentURL?.endsWith('/lib/knowledge-server.ts'))return {url:'data:text/javascript,export class ApiError extends Error {constructor(message,status=400){super(message);this.status=status}} export const runtimeEnv={};export const db=()=>globalThis.__relationsDb',shortCircuit:true};
+ if(specifier==='./public-sources'&&context.parentURL?.endsWith('/lib/knowledge-server.ts'))return {url:'data:text/javascript,'+encodeURIComponent(`export class PublicSourceError extends Error {constructor(message,status=400){super(message);this.status=status}} export async function collectPublicSources(input){globalThis.__watchRequests.push(input); const text=globalThis.__watchRecords.get(input.url);if(!text)throw new PublicSourceError('测试来源读取失败',502);return {records:[{name:'公开来源',kind:'company',url:input.url,type:'website',description:text,text,publishedAt:null,metric:'公开文本',claimType:'self_disclosed'}],notice:'test'};}`),shortCircuit:true};
+ return next(specifier,context);
+}});
+const server=await import('../lib/knowledge-server.ts');
+const manual={metric:'ARR',value:'1200',unit:'万元',currency:'CNY',period:'2026-09',scope:'公司合并',excerpt:'原文 ARR 1200 万元。'};
+const a=await server.addManualClaim('alice','investor',{...manual,entityName:'A'}),b=await server.addManualClaim('alice','investor',{...manual,entityName:'B',value:'1300',excerpt:'原文 ARR 1300 万元。'}),c=await server.addManualClaim('alice','investor',{...manual,entityName:'C'});
+const relation=(subjectId,objectId,type,status='confirmed')=>server.relateKnowledge('alice','investor',{subjectId,objectId,type,status,note:'已核对法人登记号码及原始资料。'});
+await relation(a.entity.id,b.entity.id,'SAME_ENTITY_CANDIDATE','suspected');
+assert.equal((await server.researchKnowledge('alice','investor',a.entity.id)).claims.length,1);
+await relation(a.entity.id,c.entity.id,'COMPANY_OWNS_PRODUCT');
+await relation(b.entity.id,c.entity.id,'REPO_MAINTAINED_BY');
+assert.deepEqual(confirmedIdentityIds(a.entity.id,(await server.listKnowledge('alice','investor')).relationships),[a.entity.id]);
+await relation(a.entity.id,b.entity.id,'SAME_ENTITY_CANDIDATE');
+let joint=await server.researchKnowledge('alice','investor',a.entity.id);
+assert.equal(joint.claims.length,2);assert.equal(joint.scope.entityIds.length,2);assert.ok(!joint.scope.entityIds.includes(c.entity.id));
+assert.ok(joint.findings.some(f=>f.comparison==='different'));
+const snapshot=await server.listKnowledge('alice','investor');
+assert.equal(compareClaims(a.claims[0],b.claims[0],snapshot.sources,snapshot.relationships).comparison,'different');
+assert.equal(compareClaims(a.claims[0],c.claims[0],snapshot.sources,snapshot.relationships).comparison,'incomparable');
+assert.equal(retrieveEvidence(snapshot,'ARR',a.entity.id).claims.length,2);
+assert.equal((await server.listKnowledge('alice','founder')).claims.length,0);
+await assert.rejects(()=>server.researchKnowledge('bob','investor',a.entity.id),/不属于/);
+await relation(b.entity.id,c.entity.id,'SAME_ENTITY_CANDIDATE');
+assert.equal((await server.researchKnowledge('alice','investor',a.entity.id)).scope.entityIds.length,3);
+// Reverse-direction withdrawal must update the existing identity edge, not leave it confirmed.
+await relation(b.entity.id,a.entity.id,'SAME_ENTITY_CANDIDATE','suspected');
+assert.equal((await server.researchKnowledge('alice','investor',a.entity.id)).claims.length,1);
+assert.ok(!(await server.listKnowledge('alice','investor')).findings.some(f=>f.entityId===a.entity.id&&f.comparison==='different'));
+await relation(a.entity.id,b.entity.id,'SAME_ENTITY_CANDIDATE');
+await server.deleteKnowledge('alice','investor',{id:b.entity.id});
+assert.equal((await server.researchKnowledge('alice','investor',a.entity.id)).claims.length,1);
+assert.ok(!(await server.listKnowledge('alice','investor')).findings.some(f=>f.claimIds.includes(b.claims[0].id)));
+
+const w1=await server.addManualClaim('alice','investor',{...manual,entityName:'Watch one'}),w2=await server.addManualClaim('alice','investor',{...manual,entityName:'Watch two'});
+const hash=text=>createHash('sha256').update(text).digest('hex');
+const source=(id,entityId,url,text,date='2026-01-02T00:00:00.000Z',owner='alice',role='investor')=>sql.prepare('INSERT INTO source_items(id,owner,role,entity_id,type,title,url,canonical_url,excerpt,published_at,collected_at,visibility,claim_type,content_hash,lineage_key,document_id,extraction_mode,extraction_note) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)').run(id,owner,role,entityId,'website','Public source',url,url,text,null,date,'public','self_disclosed',hash(text),url,null,'rules','test');
+for(let i=0;i<14;i++){const url='https://watch.org/'+String(i).padStart(2,'0'),text='公开说明 '+i+'；产品研发持续进行；尚未提供可验证商业指标。';source('w'+i,w1.entity.id,url,text);records.set(url,text);}
+source('old-0',w1.entity.id,'https://watch.org/00','历史旧版本，不能代替最新采集内容。','2025-01-01T00:00:00.000Z');
+source('shared-0',w2.entity.id,'https://watch.org/00',records.get('https://watch.org/00'));
+const suggestions=await server.suggestIdentityRelationships('alice','investor');assert.equal(suggestions.suggested,1);
+assert.equal((await server.listKnowledge('alice','investor')).relationships.find(r=>r.subjectId===w1.entity.id||r.subjectId===w2.entity.id)?.status,'suspected');
+assert.equal((await server.researchKnowledge('alice','investor',w1.entity.id)).scope.entityIds.length,1);
+assert.equal((await server.suggestIdentityRelationships('alice','investor')).suggested,0);
+records.delete('https://watch.org/01');
+const original02=records.get('https://watch.org/02');records.set('https://watch.org/02','公开说明 2；新增披露：完成融资，细节有待核实。');
+const first=await server.watchKnowledge('alice','investor',[w1.entity.id,w2.entity.id]);
+assert.deepEqual([first.progress.total,first.progress.processed,first.progress.remaining],[14,12,2]);assert.equal(first.run.status,'partial');assert.ok(first.progress.nextCursor);
+assert.equal(requests.length,12);assert.equal(requests.filter(r=>r.url==='https://watch.org/00').length,1);
+assert.equal(first.events.filter(e=>e.url==='https://watch.org/00').length,2);assert.ok(first.events.filter(e=>e.url==='https://watch.org/00').every(e=>!e.changed));
+assert.ok(first.events.some(e=>e.status==='failed'&&e.url==='https://watch.org/01'));
+const event=first.events.find(e=>e.url==='https://watch.org/02');assert.ok(event.changed);assert.ok(event.categories.includes('financing'));assert.notEqual(event.previousSourceId,event.sourceId);
+const changeRun=(await server.listKnowledge('alice','investor')).runs.find(r=>r.action==='watch-change');assert.deepEqual(changeRun.sourceIds,[event.previousSourceId,event.sourceId]);
+const last=await server.watchKnowledge('alice','investor',[w2.entity.id,w1.entity.id],{cursor:first.progress.nextCursor});assert.equal(last.progress.remaining,0);assert.equal(last.progress.nextCursor,null);assert.equal(requests.length,14);
+await assert.rejects(()=>server.watchKnowledge('alice','investor',[w1.entity.id],{cursor:first.progress.nextCursor}),/游标/);
+await assert.rejects(()=>server.watchKnowledge('alice','founder',[w1.entity.id]),/不属于/);
+await assert.rejects(()=>server.watchKnowledge('bob','investor',[w1.entity.id]),/不属于/);
+// Returning to a historical content hash is still a change, and becomes the current observed version.
+records.set('https://watch.org/02',original02);
+const reverted=await server.watchKnowledge('alice','investor',[w1.entity.id],{limit:3});assert.equal(reverted.events.find(e=>e.url==='https://watch.org/02').changed,true);
+const unchanged=await server.watchKnowledge('alice','investor',[w1.entity.id],{limit:3});assert.equal(unchanged.events.find(e=>e.url==='https://watch.org/02').changed,false);
+assert.equal(classifySourceChange('旧文本','官网提到创始人任命；新版产品上线').categories.includes('team'),true);
+assert.equal(classifySourceChange('旧文本','官网提到创始人任命；新版产品上线').categories.includes('product'),true);
+assert.ok(requests.every(r=>r.url?.startsWith('https://watch.org/')));
+// Direct research of an older selected entity must not inherit the overview's 250-entity limit.
+sql.prepare('UPDATE knowledge_entities SET updated_at=? WHERE id=?').run('2020-01-01',a.entity.id);
+for(let i=0;i<251;i++)sql.prepare("INSERT INTO knowledge_entities(id,owner,role,name,kind,canonical_url,created_at,updated_at) VALUES(?, 'alice','investor',?,'company',?,'2026-10-01','2026-10-01')").run('overview-'+i,'Overview '+i,'https://overview.org/'+i);
+assert.ok(!(await server.listKnowledge('alice','investor')).entities.some(entity=>entity.id===a.entity.id));
+assert.equal((await server.researchKnowledge('alice','investor',a.entity.id)).claims.length,1);
+assert.equal((await server.retrieveKnowledge('alice','investor','ARR',a.entity.id)).entities[0].id,a.entity.id);
+sql.close();delete globalThis.__relationsDb;delete globalThis.__watchRecords;delete globalThis.__watchRequests;
+console.log('PASS: explicit identity-only research expansion/revocation and isolation; conservative identity suggestions; every public URL/version dedup; continued bounded watch; durable change evidence; failures and historical reversions');
