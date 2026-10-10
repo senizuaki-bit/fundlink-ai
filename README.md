@@ -8,7 +8,9 @@
 
 ## 产品设计与架构
 
-[完整产品设计文档](docs/PRODUCT_DESIGN.md) 说明设计思路、双方使用旅程、功能模块、数据挖掘、跨源分析、匹配算法、可配置 Agent 和平台数据飞轮，并区分目标设计与当前 Demo 已实现能力。
+先读 [产品方案简版](docs/PRODUCT_OVERVIEW.md)，了解设计思路、双方功能、AI 工作方式与数据飞轮架构。
+
+需要深入了解时，可继续阅读 [完整产品设计与实现说明](docs/PRODUCT_DESIGN.md)，其中包含数据挖掘、跨源分析、匹配算法、可配置 Agent，以及目标设计与当前 Demo 的能力边界。
 
 - [平台总体架构图](docs/assets/fundlink-platform-architecture.png) · [SVG 原图](docs/assets/fundlink-platform-architecture.svg)
 - [双端共用数据飞轮图](docs/assets/fundlink-shared-flywheel.png) · [SVG 原图](docs/assets/fundlink-shared-flywheel.svg)
