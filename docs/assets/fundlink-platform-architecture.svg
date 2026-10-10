@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="880" viewBox="0 0 1200 880" role="img" aria-labelledby="title desc">
+<title id="title">FundLink AI：双端共用的平台架构</title>
+<desc id="desc">实线为当前统一基础链路。投资端与融资端经身份授权 API 进入共用证据、匹配、Agent 和业务服务。事件反馈回流至匹配、画像建议和风险复核；跨账户认领、双方独立确认以及新线索定时发现列为规划。</desc>
+<rect x="0" y="0" width="1200" height="880" rx="0" fill="#F7F8F4"/>
+<text x="48" y="49" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="30" font-weight="700" fill="#203B36" text-anchor="start">双端体验，一个平台底座</text>
+<text x="48" y="79" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="16" font-weight="400" fill="#65766F" text-anchor="start">FundLink AI  /  系统架构与能力边界</text>
+<polyline points="835,44 870,44" fill="none" stroke="#135C4B" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="882" y="50" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="15" font-weight="400" fill="#65766F" text-anchor="start">当前统一基础链路</text>
+<polyline points="835,72 870,72" fill="none" stroke="#65766F" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5"/>
+<text x="882" y="78" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="15" font-weight="400" fill="#65766F" text-anchor="start">规划能力</text>
+<rect x="48" y="110" width="512" height="114" rx="18" fill="#E8F2EB" stroke="#135C4B" stroke-width="1.5"/>
+<circle cx="91" cy="151" r="23" fill="#135C4B"/>
+<polyline points="80,156 86,147 92,151 101,139" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="131" y="151" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="24" font-weight="700" fill="#135C4B" text-anchor="start">投资端</text>
+<text x="131" y="181" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="18" font-weight="400" fill="#203B36" text-anchor="start">发现企业 · 研究风险 · 推进尽调</text>
+<text x="131" y="205" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="15" font-weight="400" fill="#65766F" text-anchor="start">投资画像与个人 Agent</text>
+<rect x="640" y="110" width="512" height="114" rx="18" fill="#F0EAF7" stroke="#71528E" stroke-width="1.5"/>
+<circle cx="683" cy="151" r="23" fill="#71528E"/>
+<polyline points="674,161 674,145 682,139 690,145 690,161" fill="none" stroke="#FFFFFF" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="678,150 686,150" fill="none" stroke="#FFFFFF" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="723" y="151" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="24" font-weight="700" fill="#71528E" text-anchor="start">融资端</text>
+<text x="723" y="181" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="18" font-weight="400" fill="#203B36" text-anchor="start">发现资本 · 研究机构 · 准备融资</text>
+<text x="723" y="205" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="15" font-weight="400" fill="#65766F" text-anchor="start">融资画像与个人 Agent</text>
+<polyline points="304,224 304,255" fill="none" stroke="#135C4B" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="304,255 299,246 309,246" fill="#135C4B"/>
+<polyline points="896,224 896,255" fill="none" stroke="#71528E" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="896,255 891,246 901,246" fill="#71528E"/>
+<rect x="48" y="256" width="1104" height="74" rx="16" fill="#FFFFFF" stroke="#C9D6CF" stroke-width="1.5"/>
+<circle cx="81" cy="293" r="14" fill="#203B36"/>
+<polyline points="75,293 80,298 87,287" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="108" y="286" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="21" font-weight="700" fill="#203B36" text-anchor="start">身份与授权 API</text>
+<text x="108" y="313" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="17" font-weight="400" fill="#65766F" text-anchor="start">角色工作区 · 资料可见范围 · 工具执行权限 · 状态版本</text>
+<text x="1122" y="299" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="17" font-weight="600" fill="#135C4B" text-anchor="end">同一入口规则</text>
+<polyline points="476,331 476,369" fill="none" stroke="#135C4B" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="476,369 471,360 481,360" fill="#135C4B"/>
+<rect x="48" y="370" width="860" height="161" rx="18" fill="#FFFFFF" stroke="#C9D6CF" stroke-width="1.5"/>
+<text x="70" y="399" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="20" font-weight="700" fill="#203B36" text-anchor="start">两端共用的智能与业务服务</text>
+<rect x="68" y="418" width="190" height="93" rx="13" fill="#E8F2EB"/>
+<text x="83" y="448" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="20" font-weight="700" fill="#135C4B" text-anchor="start">证据服务</text>
+<text x="83" y="473" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="14" font-weight="400" fill="#65766F" text-anchor="start">Evidence</text>
+<text x="83" y="496" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="14" font-weight="400" fill="#203B36" text-anchor="start">来源 · 主张 · 风险核查</text>
+<rect x="278" y="418" width="190" height="93" rx="13" fill="#E8F2EB"/>
+<text x="293" y="448" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="20" font-weight="700" fill="#135C4B" text-anchor="start">匹配服务</text>
+<text x="293" y="473" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="14" font-weight="400" fill="#65766F" text-anchor="start">Match</text>
+<text x="293" y="496" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="14" font-weight="400" fill="#203B36" text-anchor="start">双向约束 · 检索 · 排序</text>
+<rect x="488" y="418" width="190" height="93" rx="13" fill="#E8F2EB"/>
+<text x="503" y="448" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="20" font-weight="700" fill="#135C4B" text-anchor="start">Agent 服务</text>
+<text x="503" y="473" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="14" font-weight="400" fill="#65766F" text-anchor="start">Agent</text>
+<text x="503" y="496" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="14" font-weight="400" fill="#203B36" text-anchor="start">工具调用 · 任务与记忆</text>
+<rect x="698" y="418" width="190" height="93" rx="13" fill="#E8F2EB"/>
+<text x="713" y="448" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="20" font-weight="700" fill="#135C4B" text-anchor="start">业务工作流</text>
+<text x="713" y="473" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="14" font-weight="400" fill="#65766F" text-anchor="start">Workflow</text>
+<text x="713" y="496" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="14" font-weight="400" fill="#203B36" text-anchor="start">研究 · 尽调 · 结果记录</text>
+<polyline points="476,532 476,570" fill="none" stroke="#135C4B" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="476,570 471,561 481,561" fill="#135C4B"/>
+<polyline points="909,462 937,462" fill="none" stroke="#135C4B" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="937,462 928,457 928,467" fill="#135C4B"/>
+<rect x="48" y="572" width="860" height="92" rx="18" fill="#EEF1EB" stroke="#C9D6CF" stroke-width="1.5"/>
+<text x="71" y="600" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="19" font-weight="700" fill="#203B36" text-anchor="start">统一存储 · 按所有者与授权隔离</text>
+<ellipse cx="97" cy="624" rx="12" ry="4" fill="#D8E3DA" stroke="#135C4B" stroke-width="1.5"/>
+<polyline points="85,624 85,640 109,640 109,624" fill="none" stroke="#135C4B" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="121" y="637" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="17" font-weight="400" fill="#203B36" text-anchor="start">双方画像与偏好</text>
+<ellipse cx="350" cy="624" rx="12" ry="4" fill="#D8E3DA" stroke="#135C4B" stroke-width="1.5"/>
+<polyline points="338,624 338,640 362,640 362,624" fill="none" stroke="#135C4B" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="374" y="637" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="17" font-weight="400" fill="#203B36" text-anchor="start">来源、证据与关系</text>
+<ellipse cx="628" cy="624" rx="12" ry="4" fill="#D8E3DA" stroke="#135C4B" stroke-width="1.5"/>
+<polyline points="616,624 616,640 640,640 640,624" fill="none" stroke="#135C4B" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="652" y="637" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="17" font-weight="400" fill="#203B36" text-anchor="start">任务及业务记录</text>
+<rect x="938" y="370" width="214" height="294" rx="18" fill="#135C4B"/>
+<circle cx="971" cy="405" r="12" fill="#DCEEDF"/>
+<text x="971" y="411" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="21" font-weight="700" fill="#135C4B" text-anchor="middle">↻</text>
+<text x="992" y="412" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="start">统一事件</text>
+<text x="960" y="441" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="start">与反馈处理</text>
+<polyline points="960,483 1128,483" fill="none" stroke="#659283" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="960" y="510" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="17" font-weight="400" fill="#E2EFE7" text-anchor="start">记录事件与来源</text>
+<text x="960" y="538" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="17" font-weight="400" fill="#E2EFE7" text-anchor="start">区分真实 / 模拟</text>
+<text x="960" y="566" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="17" font-weight="400" fill="#E2EFE7" text-anchor="start">执行授权过滤</text>
+<text x="960" y="607" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="start">匹配 · 画像建议</text>
+<text x="960" y="637" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="start">风险复核</text>
+<polyline points="1045,665 1045,705 26,705 26,466 47,466" fill="none" stroke="#135C4B" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="47,466 38,461 38,471" fill="#135C4B"/>
+<rect x="298" y="688" width="447" height="31" rx="10" fill="#F7F8F4"/>
+<text x="521" y="710" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="17" font-weight="600" fill="#135C4B" text-anchor="middle">反馈回流：优化下一轮推荐与信息质量</text>
+<rect x="48" y="746" width="1104" height="82" rx="16" fill="#FAF8FC" stroke="#9C8AAC" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="70" y="778" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="20" font-weight="700" fill="#71528E" text-anchor="start">规划能力</text>
+<text x="210" y="778" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="19" font-weight="600" fill="#203B36" text-anchor="start">跨账户主体认领与双方独立确认</text>
+<text x="755" y="778" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="19" font-weight="600" fill="#203B36" text-anchor="start">新线索定时发现</text>
+<text x="210" y="808" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="16" font-weight="400" fill="#65766F" text-anchor="start">接入真实双边身份和确认协议</text>
+<text x="755" y="808" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="16" font-weight="400" fill="#65766F" text-anchor="start">持续发现后进入同一证据管线</text>
+<text x="48" y="858" font-family="'Microsoft YaHei','Noto Sans SC','PingFang SC',sans-serif" font-size="16" font-weight="400" fill="#65766F" text-anchor="start">共享基础设施不等于共享私有内容；未经授权，不跨客户复用私有资料。</text>
+</svg>

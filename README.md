@@ -6,11 +6,20 @@
 
 完整模块、实现位置和验收方法见 [逐项验收清单](docs/PRD_IMPLEMENTATION.md)，原始需求见 [PRD](docs/FundLink_AI_PRD_V1.0.md)。
 
+## 产品设计与架构
+
+[完整产品设计文档](docs/PRODUCT_DESIGN.md) 说明设计思路、双方使用旅程、功能模块、数据挖掘、跨源分析、匹配算法、可配置 Agent 和平台数据飞轮，并区分目标设计与当前 Demo 已实现能力。
+
+- [平台总体架构图](docs/assets/fundlink-platform-architecture.png) · [SVG 原图](docs/assets/fundlink-platform-architecture.svg)
+- [双端共用数据飞轮图](docs/assets/fundlink-shared-flywheel.png) · [SVG 原图](docs/assets/fundlink-shared-flywheel.svg)
+
 ## 本地启动
 
 安装 Node.js 24 LTS。在项目目录打开终端：
 
 ```powershell
+git clone https://github.com/senizuaki-bit/fundlink-ai.git
+cd fundlink-ai
 npm ci
 npm run db:init
 npm run dev
